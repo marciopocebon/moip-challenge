@@ -6,7 +6,7 @@ services:
     build:
       context: .
     volumes:
-      - ./build/libs/:/mta-batch
+      - ./build/libs/:/moip
     environment:
       SPRING_PROFILES_ACTIVE: dev
       MYSQL_URL: jdbc:mysql://mysql:3306/moip

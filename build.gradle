@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.2.41'
+		kotlinVersion = '1.2.50'
 		springBootVersion = '2.0.2.RELEASE'
 	}
 	repositories {
@@ -22,7 +22,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'br.com.ms'
-version = '1.0.0-SNAPSHOT'
+version = '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 compileKotlin {
