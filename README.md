@@ -13,27 +13,28 @@ For building and running the application you need:
 First, clone the project:
 
 ```shell
-git clone https://github.com/ertyui/moip-challenge.git
+git clone https://github.com/marioalvial/moip-challenge.git
 cd moip-challenge
 ```
+Running with docker:
 
-Configure data source in application.properties:
+```shell
+./gradlew build && docker-compose up --build
+```
+
+Running locally:
+Configure data source in application.yml:
 
 ```
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.datasource.url=jdbc\:mysql\://localhost/moip
-spring.datasource.username=root
+spring.datasource.url=jdbc\:mysql\://localhost:{YOUR_PORT}/{YOUR_DB_NAME}
+spring.datasource.username={YOUR_DB_USERNAME}
+spring.datasource.username={YOUR_DB_PASSWORD}
 ```
-
-## Running
-
-```shell
-cd moip-challenge
-mvn spring-boot:run
-```
+If your port is 3306 and your db doesn't have password you can ommit them
 
 ##  Testing
 
 ```shell
-mvn test
+./gradlew test
 ```
