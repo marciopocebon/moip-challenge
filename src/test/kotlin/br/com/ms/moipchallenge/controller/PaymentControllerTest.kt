@@ -52,7 +52,7 @@ class PaymentControllerTest {
         val json = mapper.writeValueAsString(request)
         this.mockMvc.perform(post("/payments/card").contentType(MediaType.APPLICATION_JSON).content(json))
                 .andExpect(status().`is`(201))
-                .andExpect(jsonPath<String>("$.status", `is`<String>("Aprovado")))
+                .andExpect(jsonPath<String>("$.status", `is`<String>("Approved")))
     }
 
     @Test
@@ -69,7 +69,7 @@ class PaymentControllerTest {
 
         this.mockMvc.perform(post("/payments/card").contentType(MediaType.APPLICATION_JSON).content(json))
                 .andExpect(status().`is`(201))
-                .andExpect(jsonPath<String>("$.status", `is`<String>("Recusado")))
+                .andExpect(jsonPath<String>("$.status", `is`<String>("Refused")))
                 .andExpect(jsonPath<Collection<*>>("$.errors", hasSize(7)))
     }
 
