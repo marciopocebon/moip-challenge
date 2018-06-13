@@ -1,13 +1,15 @@
 version: 2
 jobs:
+
+  test:
+    post:
+      - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+      - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+
   build:
     docker:
       - image: circleci/openjdk:8-jdk
 
-    test:
-      post:
-        - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-        - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
 
     working_directory: ~/moip
 
