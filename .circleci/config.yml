@@ -2,8 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/openjdk:8-jdk
+
+    test:
+      post:
+        - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+        - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
 
     working_directory: ~/moip
 
