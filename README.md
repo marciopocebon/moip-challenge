@@ -8,6 +8,9 @@ For building and running the application you need:
 
 - [Gradle](https://gradle.org/)
 
+## Documentation
+[Postman](https://documenter.getpostman.com/view/2673922/RVnZhyTK)
+
 ## Running
 
 First, clone the project:
