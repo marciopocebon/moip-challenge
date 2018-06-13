@@ -17,13 +17,13 @@ class ErrorHandler : ResponseEntityExceptionHandler() {
                                               headers: HttpHeaders, status: HttpStatus,
                                               request: WebRequest): ResponseEntity<Any> {
         val errors = ErrorObject.toErrorObject(ex.bindingResult.fieldErrors)
-        return buildResponse("Dados inválidos", status, errors)
+        return buildResponse("Invalid data.", status, errors)
     }
 
     @ExceptionHandler(value = [(EntityNotFoundException::class)])
     protected fun handleEntityNotFoundException(ex: EntityNotFoundException): ResponseEntity<Any> {
         val error = ErrorObject(ex.message, ex.field, ex.parameter)
-        return buildResponse("Entidade não encontrada", HttpStatus.NOT_FOUND, listOf(error))
+        return buildResponse("Entity not found.", HttpStatus.NOT_FOUND, listOf(error))
     }
 
     private fun buildResponse(message: String, status: HttpStatus, errors: List<ErrorObject>): ResponseEntity<Any> {

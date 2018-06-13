@@ -22,7 +22,7 @@ class PaymentResponse private constructor() {
                 .add("status", payment.status.format)
                 .add("holder_name", payment.card.holderName)
                 .add("number", payment.card.number)
-                .add("expiration_date", formatToBrazillian(payment.card.expirationDate))
+                .add("expiration_date", formatToBrazilian(payment.card.expirationDate))
                 .add("cvv", payment.card.cvv))
 
         private fun buildBoletoPayment(payment: BoletoPayment) = buildPayment(payment, EntityBuilder()
@@ -30,7 +30,7 @@ class PaymentResponse private constructor() {
                 .add("number", payment.boleto.number))
 
         private fun buildPayment(payment: Payment, method: EntityBuilder) = ResponseBuilder()
-                .add("amount", formatToBrazillian(payment.amount))
+                .add("amount", formatToBrazilian(payment.amount))
                 .add("type", payment.type.format)
                 .addObject("payment_method", method)
                 .add("buyer", payment.buyer)
@@ -38,10 +38,10 @@ class PaymentResponse private constructor() {
                 .addSelfLink(payment.id)
                 .response()
 
-        private fun formatToBrazillian(amount: BigDecimal) =
+        private fun formatToBrazilian(amount: BigDecimal) =
                 NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(amount)
 
-        private fun formatToBrazillian(date: LocalDate?) =
+        private fun formatToBrazilian(date: LocalDate?) =
                 date?.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) ?: ""
     }
 }

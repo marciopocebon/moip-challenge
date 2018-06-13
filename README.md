@@ -34,7 +34,7 @@ spring.datasource.url=jdbc\:mysql\://localhost:{YOUR_PORT}/{YOUR_DB_NAME}
 spring.datasource.username={YOUR_DB_USERNAME}
 spring.datasource.username={YOUR_DB_PASSWORD}
 ```
-If your port is 3306 and your db doesn't have password you can ommit them
+If your port is 3306 and your db doesn't have password you can omit them
 
 ##  Testing
 
