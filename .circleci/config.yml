@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: circleci/openjdk:8
     steps:
+      - checkout
       - run: ./gradlew build
       - run:
           name: Code coverage
