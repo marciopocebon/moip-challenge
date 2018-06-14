@@ -11,6 +11,7 @@ Moip Technical challenge
 For building and running the application you need:
 
 - [Gradle](https://gradle.org/)
+- [Docker](https://www.docker.com/)
 
 ## Documentation
 [Postman](https://documenter.getpostman.com/view/2673922/RVnZhyTK)
