@@ -1,8 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3308/moip
+    url: jdbc:mysql://localhost/moip
     username: root
+    password: root
 
   jpa:
     database: mysql
