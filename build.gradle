@@ -70,6 +70,7 @@ dependencies {
 	compile('com.fasterxml.jackson.module:jackson-module-kotlin')
 	compile('org.jetbrains.kotlin:kotlin-stdlib-jdk8')
 	compile('org.jetbrains.kotlin:kotlin-reflect')
+	compile 'io.sentry:sentry-spring:1.7.5'
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
     testCompile ('com.nhaarman:mockito-kotlin:1.5.0')

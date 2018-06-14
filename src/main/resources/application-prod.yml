@@ -3,3 +3,5 @@ spring:
     url: ${HOST}
     username: ${USER}
     password: ${PASSWORD}
+
+dsn: ${SENTRY_DSN}
