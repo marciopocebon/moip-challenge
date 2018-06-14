@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/marioalvial/moip-challenge/tree/master.svg?style=svg)](https://circleci.com/gh/marioalvial/moip-challenge/tree/master)
+
 # moip-challenge
 
 Moip Technical challenge 
