@@ -13,9 +13,13 @@ jobs:
       - image: circleci/openjdk:8
     steps:
       - checkout
-      - run: gradle test
-      - run: gradle jacocoTestReport
-      - run: bash <(curl -s https://codecov.io/bash)
+      - run: ./gradlew test
+      - run:
+          name: Code coverage
+          command: |
+             ./gradlew jacocoTestReport
+             ./gradlew jacocoTestCoverageVerification
+             bash <(curl -s https://codecov.io/bash)
 
 workflows:
   version: 2

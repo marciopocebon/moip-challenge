@@ -28,10 +28,20 @@ version = '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled false
-    }
+	reports {
+		xml.enabled true
+		html.enabled false
+	}
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.99
+			}
+		}
+	}
 }
 
 compileKotlin {
