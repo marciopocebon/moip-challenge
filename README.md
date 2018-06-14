@@ -33,10 +33,12 @@ Running locally:
 Configure data source in application.yml:
 
 ```
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.datasource.url=jdbc\:mysql\://localhost:{YOUR_PORT}/{YOUR_DB_NAME}
-spring.datasource.username={YOUR_DB_USERNAME}
-spring.datasource.username={YOUR_DB_PASSWORD}
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: dbc:mysql://localhost:{YOUR_PORT}/{YOUR_DB_NAME}
+    username: {YOUR_DB_USERNAME}
+    password: {YOUR_DB_PASSWORD}
 ```
 If your port is 3306 and your db doesn't have password you can omit them
 
