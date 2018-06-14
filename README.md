@@ -47,3 +47,10 @@ If your port is 3306 and your db doesn't have password you can omit them
 ```shell
 ./gradlew test
 ```
+
+## Built With
+
+- [IntelliJ](https://www.jetbrains.com/idea/) - IDE
+- [Spring](https://spring.io/) - Java Framework
+- [Gradle](https://gradle.org/) - Dependency Management
+- [Docker](https://www.docker.com/) - Containerization Platform
