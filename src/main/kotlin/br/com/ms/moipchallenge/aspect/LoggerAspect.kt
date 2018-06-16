@@ -1,6 +1,5 @@
 package br.com.ms.moipchallenge.aspect
 
-import br.com.ms.moipchallenge.modules.measureTime
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
@@ -21,12 +20,13 @@ class LoggerAspect {
         val req = RequestContextHolder.currentRequestAttributes() as ServletRequestAttributes
         logger.info("Starting... {} {}", req.request.method, req.request.servletPath)
 
-        val (elapsed, response) = measureTime { point.proceed() }
-        val entity = response as ResponseEntity<*>
+        val startTime = System.currentTimeMillis()
+        val entity = point.proceed() as ResponseEntity<*>
+        val elapsed = System.currentTimeMillis() - startTime
 
         logger.info("{} {} returning with -> Status: {} in {}ms",
                 req.request.method, req.request.servletPath, entity.statusCode, elapsed)
 
-        return response
+        return entity
     }
 }
