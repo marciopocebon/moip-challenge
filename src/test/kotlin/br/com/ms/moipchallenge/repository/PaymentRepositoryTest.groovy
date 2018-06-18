@@ -15,13 +15,13 @@ class PaymentRepositoryTest extends Specification {
     @Autowired
     PaymentRepository repository
 
-    def "find() method with valid paymentId should return a payment"(){
+    def "valid paymentId should return a payment"(){
         given: "an valid payment persisted"
         Client client = new Client("Mário")
         Buyer buyer = new Buyer("Mário", "mario@gmail.com", "99759587025")
         Payment payment = repository.save(new BoletoPayment(client, new BigDecimal(30), buyer))
 
-        when: "execute method find() passing as argument persisted payment id"
+        when: "passing payment.id as argument"
         Payment expected = repository.find(payment.id)
 
         then: "return the persisted payment"
