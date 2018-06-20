@@ -54,6 +54,10 @@ Continuous Integration is configured on CircleCI. Checkout the [continuous integ
 ./gradlew test
 ```
 
+## Diagram
+
+![Diagram](./Diagram.png)
+
 ## Built With
 
 - [IntelliJ](https://www.jetbrains.com/idea/) - IDE
