@@ -41,7 +41,12 @@ spring:
     username: {YOUR_DB_USERNAME}
     password: {YOUR_DB_PASSWORD}
 ```
-If your port is 3306 and your db doesn't have password you can omit them
+If your port is 3306 and your database doesn't have password you can omit them
+
+## Continuous Integration and Test Coverage
+Test Coverage configured on CodeCov. Checkout the [test coverage here](https://codecov.io/gh/marioalvial/moip-challenge).
+
+Continuous Integration is configured on CircleCI. Checkout the [continuous integration here](https://circleci.com/gh/marioalvial/moip-challenge)
 
 ##  Testing
 
