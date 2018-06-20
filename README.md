@@ -60,6 +60,7 @@ Continuous Integration is configured on CircleCI. Checkout the [continuous integ
 
 ## Built With
 
+- [Kotlin](https://kotlinlang.org/) - Programming language
 - [IntelliJ](https://www.jetbrains.com/idea/) - IDE
 - [Spring](https://spring.io/) - Java Framework
 - [Gradle](https://gradle.org/) - Dependency Management
