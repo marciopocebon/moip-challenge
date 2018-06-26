@@ -1,6 +1,5 @@
 [![CircleCI](https://circleci.com/gh/marioalvial/moip-challenge/tree/master.svg?style=svg)](https://circleci.com/gh/marioalvial/moip-challenge/tree/master)
 [![codecov](https://codecov.io/gh/marioalvial/moip-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/marioalvial/moip-challenge)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce42dadb1f884bb5ad2ae0f9da452494)](https://www.codacy.com/app/marioalvial/moip-challenge?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marioalvial/moip-challenge&amp;utm_campaign=Badge_Grade)
 [![lifeclye](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://codecov.io/gh/marioalvial/moip-challenge)
 
 # moip-challenge
@@ -26,6 +25,7 @@ git clone https://github.com/marioalvial/moip-challenge.git
 cd moip-challenge
 ```
 #### Running with docker
+
 
 ```shell
 ./gradlew build && docker-compose up --build
