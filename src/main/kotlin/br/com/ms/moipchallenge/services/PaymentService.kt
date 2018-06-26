@@ -10,7 +10,6 @@ import br.com.ms.moipchallenge.validator.CardValidator
 import org.springframework.stereotype.Service
 
 @Service
-
 class PaymentService(private val paymentRepository: PaymentRepository) {
 
     fun createBoletoPayment(payment: BoletoPayment) = paymentRepository.save(payment)
@@ -20,5 +19,5 @@ class PaymentService(private val paymentRepository: PaymentRepository) {
             .let { Pair(paymentRepository.save(payment), it) }
 
     fun getPayment(paymentId: Long): Payment = paymentRepository.find(paymentId)
-            ?: throw EntityNotFoundException("No payment with requested ID was found.", "id", paymentId)
+            ?: throw EntityNotFoundException("No payment with requested ID was found", "id", paymentId)
 }
