@@ -25,13 +25,13 @@ First, clone the project:
 git clone https://github.com/marioalvial/moip-challenge.git
 cd moip-challenge
 ```
-Running with docker:
+#### Running with docker
 
 ```shell
 ./gradlew build && docker-compose up --build
 ```
 
-Running locally:
+#### Running locally 
 Configure data source in application.yml:
 
 ```
