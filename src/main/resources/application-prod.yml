@@ -5,3 +5,4 @@ spring:
     password: ${PASSWORD}
 
 dsn: ${SENTRY_DSN}
+environment: prod
