@@ -15,7 +15,10 @@ class PaymentResponse private constructor() {
 
     companion object {
         fun buildPaymentResponse(payment: Payment) =
-                if (payment is BoletoPayment) buildBoletoPayment(payment) else buildCardPayment(payment as CardPayment)
+                if (payment is BoletoPayment)
+                    buildBoletoPayment(payment)
+                else
+                    buildCardPayment(payment as CardPayment)
 
         private fun buildCardPayment(payment: CardPayment) = buildPayment(payment, EntityBuilder()
                 .add("id", payment.id)

@@ -9,10 +9,12 @@ import javax.persistence.EnumType.STRING
 import javax.persistence.Enumerated
 
 @Entity
-class CardPayment(client: Client,
-                  amount: BigDecimal,
-                  buyer: Buyer,
-                  val card: Card) : Payment(CREDIT_CARD, client, amount, buyer) {
+class CardPayment(
+        client: Client,
+        amount: BigDecimal,
+        buyer: Buyer,
+        val card: Card
+) : Payment(CREDIT_CARD, client, amount, buyer) {
 
     @Enumerated(STRING)
     @Column(nullable = false)

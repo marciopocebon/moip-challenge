@@ -61,7 +61,7 @@ class PaymentServiceTest {
 
     @Test(expected = EntityNotFoundException::class)
     fun getPayment_givenNonExistingPayment_shouldReturnEntityNotFoundException() {
-        whenever(paymentRepository.find(any())).thenReturn(null)
+        whenever(paymentRepository.findBy(any())).thenReturn(null)
 
         paymentService.getPayment(10)
     }

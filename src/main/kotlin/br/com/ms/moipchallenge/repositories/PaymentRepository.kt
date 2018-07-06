@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository
 interface PaymentRepository : CrudRepository<Payment, Long>{
 
     @Query("SELECT p FROM Payment p WHERE p.id = ?1")
-    fun find(id: Long) : Payment?
+    fun findBy(id: Long) : Payment?
 }

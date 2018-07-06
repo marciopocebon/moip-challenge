@@ -12,9 +12,11 @@ import javax.validation.constraints.NotBlank
 
 @Entity
 @JsonPropertyOrder(value = ["id", "name"])
-class Client(@field:NotBlank(message = "{client.name.not.blank}")
-             @Column(nullable = false)
-             val name: String) {
+class Client(
+        @field:NotBlank(message = "{client.name.not.blank}")
+        @Column(nullable = false)
+        val name: String
+) {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

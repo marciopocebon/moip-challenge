@@ -9,6 +9,8 @@ import kotlin.reflect.KClass
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FIELD)
 @Constraint(validatedBy = [(FutureDateValidator::class)])
-annotation class FutureDate(val message: String,
-                            val groups: Array<KClass<*>> = [],
-                            val payload: Array<KClass<out Payload>> = [])
+annotation class FutureDate(
+        val message: String,
+        val groups: Array<KClass<*>> = [],
+        val payload: Array<KClass<out Payload>> = []
+)

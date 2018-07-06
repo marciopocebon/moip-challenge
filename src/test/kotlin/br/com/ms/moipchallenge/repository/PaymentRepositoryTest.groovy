@@ -22,7 +22,7 @@ class PaymentRepositoryTest extends Specification {
         Payment payment = repository.save(new BoletoPayment(client, new BigDecimal(30), buyer))
 
         when: "passing payment.id as argument"
-        Payment expected = repository.find(payment.id)
+        Payment expected = repository.findBy(payment.id)
 
         then: "return the persisted payment"
         expected != null

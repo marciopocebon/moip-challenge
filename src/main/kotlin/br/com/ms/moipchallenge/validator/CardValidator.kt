@@ -11,14 +11,12 @@ class CardValidator {
 
     companion object {
         fun validate(card: Card) = getValidator()
-                .let { getValidateResult(card, it) }
+                .let { validate(card, it) }
                 .let { ErrorObject.toErrorObject(it.fieldErrors) }
 
-        private fun getValidateResult(card: Card, validator: Validator): BeanPropertyBindingResult {
-            val result = BeanPropertyBindingResult(card, "card")
-            SpringValidatorAdapter(validator).apply { validate(card, result) }
-            return result
-        }
+        private fun validate(card: Card, validator: Validator) = card
+                .let { BeanPropertyBindingResult(card, "card") }
+                .also { SpringValidatorAdapter(validator).validate(card, it) }
 
         private fun getValidator() = Validation.buildDefaultValidatorFactory().validator
     }

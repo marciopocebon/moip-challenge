@@ -15,14 +15,16 @@ import javax.validation.constraints.NotBlank
 
 @Entity
 @JsonPropertyOrder(value = ["id", "name", "email", "cpf"])
-class Buyer(@field:NotBlank(message = "{buyer.name.not.blank}")
-            @Column(nullable = false)
-            val name: String,
-            @field:NotBlank(message = "{buyer.email.not.blank}")
-            @field:Email(message = "{buyer.email.invalid}")
-            @Column(nullable = false)
-            val email: String,
-            cpf: String) {
+class Buyer(
+        @field:NotBlank(message = "{buyer.name.not.blank}")
+        @Column(nullable = false)
+        val name: String,
+        @field:NotBlank(message = "{buyer.email.not.blank}")
+        @field:Email(message = "{buyer.email.invalid}")
+        @Column(nullable = false)
+        val email: String,
+        cpf: String
+) {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

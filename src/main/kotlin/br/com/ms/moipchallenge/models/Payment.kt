@@ -14,20 +14,22 @@ import javax.validation.constraints.Positive
 
 @Entity
 @Inheritance(strategy = JOINED)
-abstract class Payment(@Enumerated(STRING)
-                       @Column(nullable = false)
-                       val type: Type,
-                       @field:Valid
-                       @ManyToOne(optional = false, cascade = [PERSIST])
-                       val client: Client,
-                       @field:NotNull(message = "{amount.not.null}")
-                       @field:Digits(integer = 6, fraction = 2, message = "{amount.not.valid}")
-                       @field:Positive(message = "{amount.positive}")
-                       @Column(nullable = false)
-                       val amount: BigDecimal,
-                       @field:Valid
-                       @ManyToOne(optional = false, cascade = [PERSIST])
-                       val buyer: Buyer) {
+abstract class Payment(
+        @Enumerated(STRING)
+        @Column(nullable = false)
+        val type: Type,
+        @field:Valid
+        @ManyToOne(optional = false, cascade = [PERSIST])
+        val client: Client,
+        @field:NotNull(message = "{amount.not.null}")
+        @field:Digits(integer = 6, fraction = 2, message = "{amount.not.valid}")
+        @field:Positive(message = "{amount.positive}")
+        @Column(nullable = false)
+        val amount: BigDecimal,
+        @field:Valid
+        @ManyToOne(optional = false, cascade = [PERSIST])
+        val buyer: Buyer
+) {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

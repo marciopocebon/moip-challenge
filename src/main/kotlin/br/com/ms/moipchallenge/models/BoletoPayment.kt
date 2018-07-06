@@ -7,9 +7,11 @@ import java.math.BigDecimal
 import javax.persistence.Entity
 
 @Entity
-class BoletoPayment(client: Client,
-                    amount: BigDecimal,
-                    buyer: Buyer) : Payment(BOLETO, client, amount, buyer) {
+class BoletoPayment(
+        client: Client,
+        amount: BigDecimal,
+        buyer: Buyer
+) : Payment(BOLETO, client, amount, buyer) {
 
     @JsonProperty(access = READ_ONLY)
     val boleto: Boleto = Boleto()

@@ -14,10 +14,11 @@ class PaymentService(private val paymentRepository: PaymentRepository) {
 
     fun createBoletoPayment(payment: BoletoPayment) = paymentRepository.save(payment)
 
-    fun createCardPayment(payment: CardPayment) = CardValidator.validate(payment.card)
-            .also { if (it.isEmpty()) payment.status = APPROVED }
-            .let { Pair(paymentRepository.save(payment), it) }
+    fun createCardPayment(payment: CardPayment) = payment.card
+            .let { CardValidator.validate(it) }
+            .apply { if (isEmpty()) payment.status = APPROVED }
+            .let { paymentRepository.save(payment) to it }
 
-    fun getPayment(paymentId: Long): Payment = paymentRepository.find(paymentId)
+    fun getPayment(paymentId: Long): Payment = paymentRepository.findBy(paymentId)
             ?: throw EntityNotFoundException("No payment with requested ID was found", "id", paymentId)
 }
