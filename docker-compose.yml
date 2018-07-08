@@ -9,7 +9,7 @@ services:
       - ./build/libs/:/moip
     environment:
       SPRING_PROFILES_ACTIVE: dev
-      MYSQL_URL: jdbc:mysql://mysql:3306/moip
+      MYSQL_URL: jdbc:mysql://mysql:3306/moip?useSSL=false
       MYSQL_USER: root
       MYSQL_PASSWORD: root
     ports:

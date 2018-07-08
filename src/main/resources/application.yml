@@ -4,7 +4,7 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost/moip
+    url: jdbc:mysql://localhost/moip?useSSL=false
     username: root
     password: root
 
