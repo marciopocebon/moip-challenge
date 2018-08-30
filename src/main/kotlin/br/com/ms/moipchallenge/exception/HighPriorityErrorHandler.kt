@@ -1,5 +1,6 @@
 package br.com.ms.moipchallenge.exception
 
+import br.com.ms.moipchallenge.exception.ErrorObject.Companion.toErrorObject
 import br.com.ms.moipchallenge.exception.ErrorResponse.Companion.buildResponse
 import com.fasterxml.jackson.module.kotlin.MissingKotlinParameterException
 import org.springframework.core.Ordered.HIGHEST_PRECEDENCE
@@ -15,14 +16,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 @Order(HIGHEST_PRECEDENCE)
 class HighPriorityErrorHandler {
 
-    fun handleMethodArgumentNotValid(ex: MethodArgumentNotValidException) = ex.bindingResult.fieldErrors
-            .let { ErrorObject.toErrorObject(it) }
-            .let { buildResponse("Invalid data", BAD_REQUEST, it) }
+    fun handleMethodArgumentNotValid(ex: MethodArgumentNotValidException) =
+            buildResponse("Invalid data", BAD_REQUEST, ex.bindingResult.fieldErrors.map { toErrorObject(it) })
 
     @ExceptionHandler(value = [(EntityNotFoundException::class)])
-    protected fun handleEntityNotFoundException(ex: EntityNotFoundException) = ex
-            .run { ErrorObject(message, field, parameter) }
-            .let { buildResponse("Entity not found", NOT_FOUND, listOf(it)) }
+    protected fun handleEntityNotFoundException(ex: EntityNotFoundException) =
+            buildResponse("Entity not found", NOT_FOUND, listOf(ErrorObject(ex.message, ex.field, ex.parameter)))
 
     @ExceptionHandler(value = [(MissingKotlinParameterException::class)])
     protected fun handleMissingKotlinParameterException(ex: MissingKotlinParameterException): ResponseEntity<ErrorResponse> {

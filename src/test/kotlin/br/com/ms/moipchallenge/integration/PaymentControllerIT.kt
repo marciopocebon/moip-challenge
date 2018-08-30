@@ -150,7 +150,6 @@ class PaymentControllerIT {
 
         assertEquals(NOT_FOUND.value().toLong(), response.statusCodeValue.toLong())
         assertThat(response.body!!["message"]).isEqualTo("Entity not found")
-        assertThat(response.body!!["code"]).isEqualTo(404)
 
         val arrayOfErrors = response.body!!["errors"] as ArrayList<*>
         val errors = arrayOfErrors[0] as LinkedHashMap<*, *>

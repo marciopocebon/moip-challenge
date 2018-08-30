@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 @RestControllerAdvice
 class LowPriorityErrorHandler {
 
-    @ExceptionHandler(value = [(HttpMessageNotReadableException::class)])
     @Order(1)
-    fun handleHttpMessageNotReadableException(ex: HttpMessageNotReadableException) = ex
-            .run { ErrorObject("Required request body is missing.") }
-            .let { buildResponse("Bad Request.", BAD_REQUEST, listOf(it)) }
-
+    @ExceptionHandler(value = [(HttpMessageNotReadableException::class)])
+    fun handleHttpMessageNotReadableException(ex: HttpMessageNotReadableException) =
+            buildResponse("Bad Request.", BAD_REQUEST, listOf(ErrorObject("Required request body is missing.")))
 }

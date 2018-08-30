@@ -1,4 +1,5 @@
 spring:
+
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:foo;DB_CLOSE_ON_EXIT=FALSE
@@ -14,5 +15,6 @@ spring:
   jackson:
     default-property-inclusion: non_null
     property-naming-strategy: SNAKE_CASE
+
   profiles:
     active: test

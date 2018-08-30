@@ -5,7 +5,6 @@ import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Configuration
-import org.springframework.http.ResponseEntity
 import org.springframework.web.context.request.RequestContextHolder
 import org.springframework.web.context.request.ServletRequestAttributes
 
@@ -17,16 +16,17 @@ class LoggerAspect {
 
     @Around("execution(* br.com.ms.moipchallenge.web.controllers.*.*(..))")
     fun aroundControllers(point: ProceedingJoinPoint): Any? {
-        val req = RequestContextHolder.currentRequestAttributes() as ServletRequestAttributes
-        logger.info("Starting... {} {}", req.request.method, req.request.servletPath)
+        val req = (RequestContextHolder.currentRequestAttributes() as ServletRequestAttributes).request
+        val target = "${point.target::class.simpleName}.${point.signature.name}"
+
+        logger.info("${req.method} ${req.servletPath} -> Starting execution of $target")
 
         val startTime = System.currentTimeMillis()
-        val entity = point.proceed() as ResponseEntity<*>
+        val output = point.proceed()
         val elapsed = System.currentTimeMillis() - startTime
 
-        logger.info("{} {} returning with -> Status: {} in {}ms",
-                req.request.method, req.request.servletPath, entity.statusCode, elapsed)
+        logger.info("${req.method} ${req.servletPath} -> " + "Execution of $target completed in ${elapsed}ms")
 
-        return entity
+        return output
     }
 }

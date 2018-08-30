@@ -10,13 +10,13 @@ class ErrorObject(
 
     val field = field?.let { toSnakeCase(it) }
 
-    companion object {
-        fun toErrorObject(errors: List<FieldError>) = errors
-                .map { ErrorObject(it.defaultMessage ?: "", it.field, it.rejectedValue ?: "") }
-                .sortedBy { it.field }
-    }
-
     private fun toSnakeCase(field: String) = field
             .replace("(.)(\\p{Upper})".toRegex(), "$1_$2")
             .toLowerCase()
+
+    companion object {
+        fun toErrorObject(error: FieldError) =
+                ErrorObject(error.defaultMessage ?: "", error.field, error.rejectedValue ?: "")
+    }
+
 }

@@ -1,10 +1,11 @@
 spring:
+
   profiles:
     active: local
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost/moip?useSSL=false
+    url: jdbc:mysql://localhost/moip_challenge
     username: root
     password: root
 

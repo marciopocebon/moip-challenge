@@ -2,25 +2,28 @@ version: '3'
 
 services:
 
-  api:
+  moip-challenge-api:
+    container_name: moip-challenge-api
     build:
       context: .
     volumes:
       - ./build/libs/:/moip
     environment:
       SPRING_PROFILES_ACTIVE: dev
-      MYSQL_URL: jdbc:mysql://mysql:3306/moip?useSSL=false
+      MYSQL_URL: jdbc:mysql://moip-challenge-mysql/moip_challenge
       MYSQL_USER: root
       MYSQL_PASSWORD: root
     ports:
       - "8080:8080"
+    restart: always
     depends_on:
-      - mysql
+      - moip-challenge-mysql
 
-  mysql:
+  moip-challenge-mysql:
+    container_name: moip-challenge-mysql
     image: mysql:5.7.21
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: moip
+      MYSQL_DATABASE: moip_challenge
