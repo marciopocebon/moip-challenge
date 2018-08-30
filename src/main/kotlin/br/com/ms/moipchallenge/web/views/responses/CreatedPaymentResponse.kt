@@ -1,9 +1,9 @@
 package br.com.ms.moipchallenge.web.views.responses
 
-import br.com.ms.moipchallenge.web.views.builders.ResponseBuilder
 import br.com.ms.moipchallenge.exception.ErrorObject
 import br.com.ms.moipchallenge.payment.BoletoPayment
 import br.com.ms.moipchallenge.payment.CardPayment
+import br.com.ms.moipchallenge.web.views.builders.ResponseBuilder
 
 object CreatedPaymentResponse {
 
@@ -13,7 +13,7 @@ object CreatedPaymentResponse {
             .response()
 
     fun boletoPaymentCreated(payment: BoletoPayment) = ResponseBuilder()
-            .add("number", payment.boleto)
+            .add("number", payment.formatBoletoNumber())
             .addSelfLink(payment.id)
             .response()
 }

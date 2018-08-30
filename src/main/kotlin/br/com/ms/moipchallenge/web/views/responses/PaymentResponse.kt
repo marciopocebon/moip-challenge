@@ -1,10 +1,10 @@
 package br.com.ms.moipchallenge.web.views.responses
 
-import br.com.ms.moipchallenge.web.views.builders.EntityBuilder
-import br.com.ms.moipchallenge.web.views.builders.ResponseBuilder
 import br.com.ms.moipchallenge.payment.BoletoPayment
 import br.com.ms.moipchallenge.payment.CardPayment
 import br.com.ms.moipchallenge.payment.Payment
+import br.com.ms.moipchallenge.web.views.builders.EntityBuilder
+import br.com.ms.moipchallenge.web.views.builders.ResponseBuilder
 import java.math.BigDecimal
 import java.text.NumberFormat
 import java.time.LocalDate
@@ -29,7 +29,7 @@ object PaymentResponse {
 
     private fun buildBoletoPayment(payment: BoletoPayment) = buildPayment(payment, EntityBuilder()
             .add("id", payment.id)
-            .add("number", payment.boleto))
+            .add("number", payment.formatBoletoNumber()))
 
     private fun buildPayment(payment: Payment, method: EntityBuilder): Map<String, Any> = ResponseBuilder()
             .add("amount", formatToBrazilian(payment.amount))

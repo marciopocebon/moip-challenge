@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank
 
 @Entity
 @JsonPropertyOrder(value = ["id", "name"])
-class Client(
+data class Client(
         @field:NotBlank(message = "{client.name.not.blank}")
         @Column(nullable = false)
         val name: String

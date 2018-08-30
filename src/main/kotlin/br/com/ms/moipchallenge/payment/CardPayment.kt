@@ -21,4 +21,6 @@ class CardPayment(
     @Enumerated(STRING)
     @Column(nullable = false)
     var status = REFUSED
+
+    override fun toString() = "CardPayment(client=$client, amount=$amount, buyer=$buyer, card=$card, status= $status)"
 }
