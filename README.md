@@ -62,8 +62,6 @@ Continuous Integration is configured on CircleCI. Checkout the [continuous integ
 ## Diagram
 
 ![Diagram](./diagram.png)
-![Diagram](./diagram.uml)
-![Diagram](./diagram3.png)
 
 ## Built With
 
