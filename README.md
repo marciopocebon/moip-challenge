@@ -19,7 +19,7 @@ For building and running the application you need:
 - [Docker](https://www.docker.com/)
 
 ## Documentation
-[Postman](https://documenter.getpostman.com/view/2673922/RVnZhyTK)
+[Postman](https://documenter.getpostman.com/view/4456023/RzfmG7dV)
 
 ## Running
 
