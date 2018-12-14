@@ -9,7 +9,7 @@ services:
     volumes:
       - ./build/libs/:/moip
     environment:
-      SPRING_PROFILES_ACTIVE: dev
+      SPRING_PROFILES_ACTIVE: development
       MYSQL_URL: jdbc:mysql://moip-challenge-mysql/moip_challenge
       MYSQL_USER: root
       MYSQL_PASSWORD: root

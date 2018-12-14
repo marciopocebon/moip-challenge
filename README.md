@@ -6,7 +6,6 @@
  |_|  |_|  \___/  |___| |_|        \____| |_| |_| /_/   \_\ |_____| |_____| |_____| |_| \_|  \____| |_____|
 ```
 [![CircleCI](https://circleci.com/gh/marioalvial/moip-challenge/tree/master.svg?style=svg)](https://circleci.com/gh/marioalvial/moip-challenge/tree/master)
-[![codecov](https://codecov.io/gh/marioalvial/moip-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/marioalvial/moip-challenge)
 [![BCH compliance](https://bettercodehub.com/edge/badge/marioalvial/moip-challenge?branch=master)](https://bettercodehub.com/)
 [![lifeclye](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://codecov.io/gh/marioalvial/moip-challenge)
 
@@ -51,7 +50,6 @@ spring:
 If your port is 3306 and your database doesn't have password you can omit them
 
 ## Continuous Integration and Test Coverage
-Test Coverage configured on CodeCov. Checkout the [test coverage here](https://codecov.io/gh/marioalvial/moip-challenge).
 
 Continuous Integration is configured on CircleCI. Checkout the [continuous integration here](https://circleci.com/gh/marioalvial/moip-challenge)
 
@@ -63,7 +61,9 @@ Continuous Integration is configured on CircleCI. Checkout the [continuous integ
 
 ## Diagram
 
-![Diagram](./Diagram.png)
+![Diagram](./diagram.png)
+![Diagram](./diagram.uml)
+![Diagram](./diagram3.png)
 
 ## Built With
 

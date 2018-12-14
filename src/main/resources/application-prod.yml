@@ -1,8 +1,0 @@
-spring:
-
-  datasource:
-    url: ${HOST}
-    username: ${USER}
-    password: ${PASSWORD}
-
-dsn: ${SENTRY_DSN}

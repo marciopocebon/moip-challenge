@@ -1,7 +1,7 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.2.50'
-		springBootVersion = '2.0.2.RELEASE'
+		kotlinVersion = '1.3.0'
+		springBootVersion = '2.1.0.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -16,8 +16,8 @@ buildscript {
 
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
-apply plugin: 'eclipse'
 apply plugin: "kotlin-jpa"
+apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'jacoco'
@@ -75,7 +75,5 @@ dependencies {
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
     testCompile('com.nhaarman:mockito-kotlin:1.5.0')
-	testCompile('org.spockframework:spock-core:1.1-groovy-2.4')
-	testCompile('org.spockframework:spock-spring:1.1-groovy-2.4')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
