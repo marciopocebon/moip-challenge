@@ -8,11 +8,11 @@ jobs:
       - checkout
       - run: ./gradlew build
       - run:
-        name: Code coverage
-        command: |
-          ./gradlew jacocoTestReport
-          ./gradlew jacocoTestCoverageVerification
-          bash <(curl -s https://codecov.io/bash)
+          name: Code coverage
+          command: |
+            ./gradlew jacocoTestReport
+            ./gradlew jacocoTestCoverageVerification
+            bash <(curl -s https://codecov.io/bash)
 
 workflows:
   version: 2
