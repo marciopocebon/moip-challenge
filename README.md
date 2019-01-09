@@ -22,6 +22,8 @@ For building and running the application you need:
 ## Documentation
 [Postman](https://documenter.getpostman.com/view/4456023/RzfmG7dV)
 
+## Executing requests
+
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b5899ab4c00b3868e5fc#?env%5BMoip%20Challenge%5D=W3sia2V5IjoibG9jYWwiLCJ2YWx1ZSI6ImxvY2FsaG9zdDo4MDgwIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJwcm9kIiwidmFsdWUiOiJodHRwczovL21vaXAtY2hhbGxlbmdlLXByb2QuaGVyb2t1YXBwLmNvbSIsImVuYWJsZWQiOnRydWV9XQ==)
 
 ## Running
