@@ -1,6 +1,8 @@
-package br.com.ms.moipchallenge.views.requests
+package br.com.ms.moipchallenge.requests
 
+import br.com.ms.moipchallenge.models.Buyer
 import java.math.BigDecimal
+import javax.validation.Valid
 import javax.validation.constraints.Digits
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Positive
@@ -12,6 +14,6 @@ class BoletoPaymentRequest(
         val amount: BigDecimal,
         @field:NotNull(message = "{client.id.not.null}")
         val clientId: Long,
-        @field:NotNull(message = "{buyer.id.not.null}")
-        val buyerId: Long
+        @field:Valid
+        val buyer: Buyer
 )

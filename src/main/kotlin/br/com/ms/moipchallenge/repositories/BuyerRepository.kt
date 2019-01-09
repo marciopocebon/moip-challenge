@@ -9,7 +9,6 @@ interface BuyerRepository : Repository<Buyer, Long> {
 
     fun save(buyer: Buyer): Buyer
 
-    fun findById(id: Long): Buyer?
+    fun findByEmail(email: String): Buyer?
 
-    fun findAll(pageable: Pageable): Page<Buyer>
 }

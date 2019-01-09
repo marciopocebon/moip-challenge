@@ -19,6 +19,5 @@ class MoipChallengeApplication{
 }
 
 fun main(args: Array<String>) {
-    val env = runApplication<MoipChallengeApplication>(*args).getBean(Environment::class.java)
-    Messenger.env = env
+    Messenger.env = runApplication<MoipChallengeApplication>(*args).getBean(Environment::class.java)
 }

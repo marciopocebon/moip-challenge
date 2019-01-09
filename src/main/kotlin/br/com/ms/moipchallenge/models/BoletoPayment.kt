@@ -19,8 +19,5 @@ class BoletoPayment(
 ) : Payment(BOLETO, client, amount, buyer) {
 
     @JsonProperty(access = READ_ONLY)
-    val number: String = Random()
-            .ints(45, 0, 10)
-            .asSequence()
-            .joinToString("")
+    val number: String = Random().ints(45, 0, 10).asSequence().joinToString("")
 }

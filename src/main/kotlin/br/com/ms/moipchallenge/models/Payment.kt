@@ -3,7 +3,6 @@ package br.com.ms.moipchallenge.models
 import br.com.ms.moipchallenge.enums.Type
 import java.math.BigDecimal
 import java.math.RoundingMode.HALF_UP
-import java.time.LocalDateTime
 import javax.persistence.*
 import javax.persistence.CascadeType.PERSIST
 import javax.persistence.EnumType.STRING
@@ -30,8 +29,6 @@ abstract class Payment(
     @Id
     @GeneratedValue(strategy = IDENTITY)
     val id: Long = 0
-    val createdAt = LocalDateTime.now()
-    val updatedAt = LocalDateTime.now()
 
-    fun getAmount() = amount.setScale(2, HALF_UP)
+    fun amount(): BigDecimal = amount.setScale(2, HALF_UP)
 }

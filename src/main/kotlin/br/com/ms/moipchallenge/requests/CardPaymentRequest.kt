@@ -1,5 +1,6 @@
-package br.com.ms.moipchallenge.views.requests
+package br.com.ms.moipchallenge.requests
 
+import br.com.ms.moipchallenge.models.Buyer
 import br.com.ms.moipchallenge.models.Card
 import java.math.BigDecimal
 import javax.validation.Valid
@@ -14,8 +15,7 @@ class CardPaymentRequest(
         val amount: BigDecimal,
         @field:NotNull(message = "{client.id.not.null}")
         val clientId: Long,
-        @field:NotNull(message = "{buyer.id.not.null}")
-        val buyerId: Long,
-        @Valid
+        @field:Valid
+        val buyer: Buyer,
         val card: Card
 )

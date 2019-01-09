@@ -1,11 +1,7 @@
 package br.com.ms.moipchallenge.models
 
-import br.com.ms.moipchallenge.resources.BuyerResource
-import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY
-import com.fasterxml.jackson.databind.annotation.JsonSerialize
+import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import org.hibernate.validator.constraints.br.CPF
-import java.time.LocalDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -15,14 +11,14 @@ import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
 
 @Entity
-@JsonSerialize(using = BuyerResource::class)
+@JsonPropertyOrder("id", "name", "email", "cpf")
 data class Buyer(
         @field:NotBlank(message = "{buyer.name.not.blank}")
         @Column(nullable = false)
         val name: String,
         @field:NotBlank(message = "{buyer.email.not.blank}")
         @field:Email(message = "{buyer.email.invalid}")
-        @Column(nullable = false)
+        @Column(nullable = false, unique = true)
         val email: String,
         @field:CPF(message = "{buyer.cpf.invalid}")
         @field:NotBlank(message = "{buyer.cpf.not.blank}")
@@ -33,9 +29,4 @@ data class Buyer(
     @Id
     @GeneratedValue(strategy = IDENTITY)
     val id: Long = 0
-
-    @JsonProperty(access = READ_ONLY)
-    val createdAt = LocalDateTime.now()
-    @JsonProperty(access = READ_ONLY)
-    val updatedAt = LocalDateTime.now()
 }

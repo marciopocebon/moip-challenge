@@ -11,5 +11,4 @@ interface PaymentRepository : Repository<Payment, Long> {
 
     fun findById(id: Long) : Payment?
 
-    fun findAll(pageable: Pageable): Page<Payment>
 }
