@@ -35,9 +35,9 @@ class PaymentServiceTest {
     @Mock
     lateinit var clientService: ClientService
 
-    lateinit var buyer: Buyer
+    private lateinit var buyer: Buyer
 
-    lateinit var client: Client
+    private lateinit var client: Client
 
     @Before
     fun setup(){
@@ -46,14 +46,14 @@ class PaymentServiceTest {
     }
 
     @Test
-    fun givenCardPaymentRequestWithValidCardShouldSaveAndReturnItWithApproveStatusAndNullErrors(){
+    fun `given card payment request with valid card should save and return it with approve status and null errors`(){
         val card = Card("Holder", "5339456341711112", LocalDate.now().plusDays(1), "181")
         val cardPaymentRequest = CardPaymentRequest(BigDecimal.valueOf(35.3), 1, buyer, card)
         val cardPayment = CardPayment(cardPaymentRequest.amount, client, buyer, card, APPROVED)
 
         whenever(buyerService.save(any())).thenReturn(buyer)
         whenever(clientService.save(any())).thenReturn(client)
-        whenever(paymentRepository.save(any())).thenReturn(cardPayment)
+        whenever(paymentRepository.save(any<CardPayment>())).thenReturn(cardPayment)
 
         val (payment, errors) = paymentService.saveCardPayment(cardPaymentRequest)
 
@@ -62,14 +62,14 @@ class PaymentServiceTest {
     }
 
     @Test
-    fun givenCardPaymentRequestWithInvalidCardShouldSaveAndReturnItWithDeclinedStatusAndErrors(){
+    fun `given card payment request with invalid card should save and return it with declined status and errors`(){
         val card = Card("", "", LocalDate.now().minusDays(1), "")
         val cardPaymentRequest = CardPaymentRequest(BigDecimal.valueOf(35.3), 1, buyer, card)
         val cardPayment = CardPayment(cardPaymentRequest.amount, client, buyer, card, DECLINED)
 
         whenever(buyerService.save(any())).thenReturn(buyer)
         whenever(clientService.save(any())).thenReturn(client)
-        whenever(paymentRepository.save(any())).thenReturn(cardPayment)
+        whenever(paymentRepository.save(any<CardPayment>())).thenReturn(cardPayment)
 
         val (payment, errors) = paymentService.saveCardPayment(cardPaymentRequest)
 

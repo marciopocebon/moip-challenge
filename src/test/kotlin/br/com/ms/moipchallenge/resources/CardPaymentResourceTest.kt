@@ -15,7 +15,7 @@ import java.time.LocalDate
 
 class CardPaymentResourceTest {
 
-    lateinit var mapper: ObjectMapper
+    private lateinit var mapper: ObjectMapper
 
     @Before
     fun setup() {
@@ -24,7 +24,7 @@ class CardPaymentResourceTest {
     }
 
     @Test
-    fun givenValidBoletoPaymentShouldSerializeItCorrectly() {
+    fun `given valid boleto payment should serialize it correctly`() {
         val client = Client(0)
         val buyer = Buyer("Buyer", "buyer@gmail.com", "65914918057")
         val card = Card("Holder", "5339456341711112", LocalDate.of(2030, 3, 14), "181")
@@ -41,5 +41,5 @@ class CardPaymentResourceTest {
         return "${begin}cvv$end"
     }
 
-    private fun responseJson() = "{\"id\":0,\"amount\":35.30,\"type\":\"CREDIT_CARD\",\"status\":\"APPROVED\",\"card\":{\"holderName\":\"Holder\",\"number\":\"5339456341711112\",\"cvv\":\"181\"},\"client\":{\"id\":0,\"name\":\"Client 0\"},\"buyer\":{\"id\":0,\"name\":\"Buyer\",\"email\":\"buyer@gmail.com\",\"cpf\":\"65914918057\"}"
+    private fun responseJson() = "{\"id\":0,\"amount\":35.30,\"paymentType\":\"CREDIT_CARD\",\"status\":\"APPROVED\",\"card\":{\"holderName\":\"Holder\",\"number\":\"5339456341711112\",\"cvv\":\"181\"},\"client\":{\"id\":0,\"name\":\"Client 0\"},\"buyer\":{\"id\":0,\"name\":\"Buyer\",\"email\":\"buyer@gmail.com\",\"cpf\":\"65914918057\"}"
 }

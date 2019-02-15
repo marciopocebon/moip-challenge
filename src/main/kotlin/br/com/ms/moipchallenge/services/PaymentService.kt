@@ -10,8 +10,8 @@ import br.com.ms.moipchallenge.models.Payment
 import br.com.ms.moipchallenge.repositories.PaymentRepository
 import br.com.ms.moipchallenge.requests.BoletoPaymentRequest
 import br.com.ms.moipchallenge.requests.CardPaymentRequest
-import br.com.ms.moipchallenge.utils.Messenger.message
-import br.com.ms.moipchallenge.utils.validator.CardValidator
+import br.com.ms.moipchallenge.PAYMENT_NOT_FOUND
+import br.com.ms.moipchallenge.validator.CardValidator
 import org.springframework.stereotype.Service
 
 @Service
@@ -25,7 +25,7 @@ class PaymentService(
         val client = clientService.save(request.clientId)
         val buyer = buyerService.save(request.buyer)
 
-        return savePayment(BoletoPayment(request.amount, client, buyer)) as BoletoPayment
+        return paymentRepository.save(BoletoPayment(request.amount, client, buyer))
     }
 
     fun saveCardPayment(request: CardPaymentRequest): Pair<CardPayment, List<ErrorObject>?> {
@@ -34,11 +34,10 @@ class PaymentService(
         val errors = CardValidator.validate(request.card)
         val status = if (errors != null) DECLINED else APPROVED
 
-        return savePayment(CardPayment(request.amount, client, buyer, request.card, status)) as CardPayment to errors
+        return paymentRepository.save(CardPayment(request.amount, client, buyer, request.card, status)) to errors
     }
 
-    fun findById(id: Long): Payment = paymentRepository.findById(id)
-            ?: throw EntityNotFoundException(message("payment.not.found"), "id", id)
+    fun findById(id: Long): Payment =
+            paymentRepository.findById(id) ?: throw EntityNotFoundException(PAYMENT_NOT_FOUND, "id", id)
 
-    private fun savePayment(payment: Payment) = paymentRepository.save(payment)
 }

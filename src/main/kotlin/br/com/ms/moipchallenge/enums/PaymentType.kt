@@ -1,7 +1,7 @@
 package br.com.ms.moipchallenge.enums
 
-enum class Type {
+enum class PaymentType {
 
     BOLETO,
-    CREDIT_CARD;
+    CREDIT_CARD
 }

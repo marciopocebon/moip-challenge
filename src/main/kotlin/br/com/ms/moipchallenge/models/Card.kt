@@ -1,6 +1,7 @@
 package br.com.ms.moipchallenge.models
 
-import br.com.ms.moipchallenge.utils.annotation.FutureDate
+import br.com.ms.moipchallenge.*
+import br.com.ms.moipchallenge.annotation.FutureDate
 import org.hibernate.validator.constraints.CreditCardNumber
 import java.time.LocalDate
 import javax.persistence.Embeddable
@@ -10,15 +11,15 @@ import javax.validation.constraints.Size
 
 @Embeddable
 class Card(
-        @field:NotBlank(message = "{card.holder.name.not.blank}")
+        @field:NotBlank(message = CARD_HOLDER_NAME_NOT_BLANK)
         val holderName: String,
-        @field:CreditCardNumber(message = "{card.number.invalid}")
-        @field:NotBlank(message = "{card.number.not.blank}")
+        @field:CreditCardNumber(message = CARD_NUMBER_INVALID)
+        @field:NotBlank(message = CARD_NUMBER_NOT_BLANK)
         val number: String,
-        @field:NotNull(message = "{expiration.date.not.null}")
-        @field:FutureDate(message = "{expiration.date.future}")
+        @field:NotNull(message = EXPIRATION_DATE_NOT_NULL)
+        @field:FutureDate(message = EXPIRATION_DATE_NOT_ALLOW_PAST_DATES)
         val expirationDate: LocalDate,
-        @field:NotBlank(message = "{cvv.not.blank}")
-        @field:Size(min = 3, max = 3, message = "{cvv.size}")
+        @field:NotBlank(message = CVV_NOT_BLANK)
+        @field:Size(min = 3, max = 3, message = CVV_SIZE)
         val cvv: String
 )

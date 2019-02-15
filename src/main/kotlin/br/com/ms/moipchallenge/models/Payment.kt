@@ -1,6 +1,6 @@
 package br.com.ms.moipchallenge.models
 
-import br.com.ms.moipchallenge.enums.Type
+import br.com.ms.moipchallenge.enums.PaymentType
 import java.math.BigDecimal
 import java.math.RoundingMode.HALF_UP
 import javax.persistence.*
@@ -15,7 +15,7 @@ import javax.validation.Valid
 abstract class Payment(
         @Enumerated(STRING)
         @Column(nullable = false)
-        val type: Type,
+        val paymentType: PaymentType,
         @field:Valid
         @ManyToOne(optional = false, cascade = [PERSIST])
         val client: Client,

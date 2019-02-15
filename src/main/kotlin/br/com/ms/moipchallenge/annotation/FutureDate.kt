@@ -1,6 +1,6 @@
-package br.com.ms.moipchallenge.utils.annotation
+package br.com.ms.moipchallenge.annotation
 
-import br.com.ms.moipchallenge.utils.validator.FutureDateValidator
+import br.com.ms.moipchallenge.validator.FutureDateValidator
 import javax.validation.Constraint
 import javax.validation.Payload
 import kotlin.reflect.KClass

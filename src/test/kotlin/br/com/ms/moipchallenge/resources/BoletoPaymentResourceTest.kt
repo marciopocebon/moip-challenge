@@ -12,7 +12,7 @@ import java.math.BigDecimal
 
 class BoletoPaymentResourceTest {
 
-    lateinit var mapper: ObjectMapper
+    private lateinit var mapper: ObjectMapper
 
     @Before
     fun setup() {
@@ -21,7 +21,7 @@ class BoletoPaymentResourceTest {
     }
 
     @Test
-    fun givenValidBoletoPaymentShouldSerializeItCorrectly() {
+    fun `given valid boleto payment should serialize it correctly`() {
         val client = Client(0)
         val buyer = Buyer("Buyer", "buyer@gmail.com", "65914918057")
         val boletoPayment = BoletoPayment(BigDecimal(35.3), client, buyer)
@@ -31,5 +31,5 @@ class BoletoPaymentResourceTest {
         assertThat(json).isEqualTo(responseJson(boletoPayment.number))
     }
 
-    private fun responseJson(number: String) = "{\"id\":0,\"amount\":35.30,\"type\":\"BOLETO\",\"number\":\"$number\",\"client\":{\"id\":0,\"name\":\"Client 0\"},\"buyer\":{\"id\":0,\"name\":\"Buyer\",\"email\":\"buyer@gmail.com\",\"cpf\":\"65914918057\"}}"
+    private fun responseJson(number: String) = "{\"id\":0,\"amount\":35.30,\"paymentType\":\"BOLETO\",\"number\":\"$number\",\"client\":{\"id\":0,\"name\":\"Client 0\"},\"buyer\":{\"id\":0,\"name\":\"Buyer\",\"email\":\"buyer@gmail.com\",\"cpf\":\"65914918057\"}}"
 }

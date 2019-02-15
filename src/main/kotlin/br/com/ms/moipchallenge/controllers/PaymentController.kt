@@ -2,7 +2,8 @@ package br.com.ms.moipchallenge.controllers
 
 import br.com.ms.moipchallenge.requests.BoletoPaymentRequest
 import br.com.ms.moipchallenge.requests.CardPaymentRequest
-import br.com.ms.moipchallenge.responses.PaymentCreatedResponse
+import br.com.ms.moipchallenge.responses.BoletoPaymentResponse
+import br.com.ms.moipchallenge.responses.CardPaymentResponse
 import br.com.ms.moipchallenge.services.PaymentService
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
@@ -17,14 +18,17 @@ class PaymentController(
 ) {
 
     @PostMapping("boleto")
-    fun saveBoletoPayment(@Valid @RequestBody request: BoletoPaymentRequest) =
-            ResponseEntity(PaymentCreatedResponse.boleto(paymentService.saveBoletoPayment(request)), CREATED)
+    fun saveBoletoPayment(@Valid @RequestBody request: BoletoPaymentRequest): ResponseEntity<BoletoPaymentResponse> {
+        val payment = paymentService.saveBoletoPayment(request)
+
+        return ResponseEntity(BoletoPaymentResponse(payment), CREATED)
+    }
 
     @PostMapping("card")
-    fun saveCardPayment(@Valid @RequestBody request: CardPaymentRequest): ResponseEntity<Map<String, Any?>> {
+    fun saveCardPayment(@Valid @RequestBody request: CardPaymentRequest): ResponseEntity<CardPaymentResponse> {
         val (status, errors) = paymentService.saveCardPayment(request)
 
-        return ResponseEntity(PaymentCreatedResponse.card(status, errors), CREATED)
+        return ResponseEntity(CardPaymentResponse(status, errors), CREATED)
     }
 
     @GetMapping("{id}")

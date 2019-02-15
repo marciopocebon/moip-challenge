@@ -1,6 +1,6 @@
-package br.com.ms.moipchallenge.utils.validator
+package br.com.ms.moipchallenge.validator
 
-import br.com.ms.moipchallenge.utils.annotation.FutureDate
+import br.com.ms.moipchallenge.annotation.FutureDate
 import java.time.LocalDate
 import javax.validation.ConstraintValidator
 import javax.validation.ConstraintValidatorContext

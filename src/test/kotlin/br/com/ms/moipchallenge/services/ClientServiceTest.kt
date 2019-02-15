@@ -23,14 +23,14 @@ class ClientServiceTest {
     @Mock
     lateinit var clientRepository: ClientRepository
     
-    lateinit var client: Client
+    private lateinit var client: Client
 
     @Before
     fun setup(){
         client = Client(0)
     }
     @Test
-    fun givenNewBuyerShouldSaveIt(){
+    fun `given new client should save it`(){
         whenever(clientRepository.findByName(anyString())).thenReturn(null)
 
         clientService.save(client.id)
@@ -39,7 +39,7 @@ class ClientServiceTest {
     }
 
     @Test
-    fun givenAnExistentBuyerShouldFindAndReturnIt(){
+    fun `given an existent buyer should find and return it`(){
         whenever(clientRepository.findByName(anyString())).thenReturn(client)
 
         clientService.save(client.id)

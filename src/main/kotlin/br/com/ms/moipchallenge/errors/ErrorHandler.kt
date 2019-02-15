@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 class ErrorHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
-    fun handleMethodArgumentNotValid(ex: MethodArgumentNotValidException) = ex.bindingResult.fieldErrors
-            .map { ErrorObject(it.defaultMessage!!, it.field, it.rejectedValue!!) }
+    fun handleMethodArgumentNotValid(ex: MethodArgumentNotValidException) = ex
+            .bindingResult
+            .fieldErrors
+            .map { ErrorObject(it.defaultMessage ?: "", it.field, it.rejectedValue ?: "") }
             .let { ResponseEntity(ErrorResponse("Invalid data", it), BAD_REQUEST) }
 
     @ExceptionHandler(MoipChallengeException::class)
-    fun handleYellowChallengeException(ex: MoipChallengeException) = ex.errorResponse()
+    fun handleMoipChallengeException(ex: MoipChallengeException) = ex.errorResponse()
 }

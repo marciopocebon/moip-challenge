@@ -1,7 +1,7 @@
 package br.com.ms.moipchallenge.models
 
 import br.com.ms.moipchallenge.enums.CardPaymentStatus
-import br.com.ms.moipchallenge.enums.Type.CREDIT_CARD
+import br.com.ms.moipchallenge.enums.PaymentType.CREDIT_CARD
 import br.com.ms.moipchallenge.resources.CardPaymentResource
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import java.math.BigDecimal

@@ -1,8 +1,6 @@
 package br.com.ms.moipchallenge.repositories
 
 import br.com.ms.moipchallenge.models.Buyer
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.Repository
 
 interface BuyerRepository : Repository<Buyer, Long> {

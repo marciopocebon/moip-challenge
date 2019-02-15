@@ -1,12 +1,10 @@
 package br.com.ms.moipchallenge
 
-import br.com.ms.moipchallenge.utils.Messenger
 import io.sentry.spring.SentryExceptionResolver
 import io.sentry.spring.SentryServletContextInitializer
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
-import org.springframework.core.env.Environment
 
 @SpringBootApplication
 class MoipChallengeApplication{
@@ -19,5 +17,5 @@ class MoipChallengeApplication{
 }
 
 fun main(args: Array<String>) {
-    Messenger.env = runApplication<MoipChallengeApplication>(*args).getBean(Environment::class.java)
+    runApplication<MoipChallengeApplication>(*args)
 }

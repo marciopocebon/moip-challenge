@@ -23,14 +23,14 @@ class BuyerServiceTest {
     @Mock
     lateinit var buyerRepository: BuyerRepository
 
-    lateinit var buyer: Buyer
+    private lateinit var buyer: Buyer
 
     @Before
     fun setup(){
         buyer = Buyer("Buyer", "buyer@gmail.com", "65914918057")
     }
     @Test
-    fun givenNewBuyerShouldSaveIt(){
+    fun `given new buyer should save it`(){
         whenever(buyerRepository.findByEmail(anyString())).thenReturn(null)
 
         buyerService.save(buyer)
@@ -39,7 +39,7 @@ class BuyerServiceTest {
     }
 
     @Test
-    fun givenAnExistentBuyerShouldFindAndReturnIt(){
+    fun `given an existent buyer should find and return it`(){
         whenever(buyerRepository.findByEmail(anyString())).thenReturn(buyer)
 
         buyerService.save(buyer)

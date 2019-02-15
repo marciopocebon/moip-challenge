@@ -4,7 +4,6 @@ import br.com.ms.moipchallenge.models.Buyer
 import br.com.ms.moipchallenge.models.Card
 import br.com.ms.moipchallenge.requests.BoletoPaymentRequest
 import br.com.ms.moipchallenge.requests.CardPaymentRequest
-import br.com.ms.moipchallenge.utils.Messenger
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.Before
 import org.junit.Test
@@ -12,7 +11,6 @@ import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.core.env.Environment
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
@@ -34,9 +32,6 @@ class PaymentControllerIT {
     @Autowired
     lateinit var mapper: ObjectMapper
 
-    @Autowired
-    lateinit var environment: Environment
-
     lateinit var buyer: Buyer
 
     @Before
@@ -45,7 +40,7 @@ class PaymentControllerIT {
     }
 
     @Test
-    fun givenValidBoletoPaymentRequestShouldReturnCreatedStatus() {
+    fun `given valid boleto payment request should return created status`() {
         val boletoPaymentRequest = BoletoPaymentRequest(BigDecimal.valueOf(35.3), 1, buyer)
 
         mvc.perform(post("/payments/boleto")
@@ -55,7 +50,7 @@ class PaymentControllerIT {
     }
 
     @Test
-    fun givenValidCardPaymentRequestShouldReturnCreatedStatus() {
+    fun `given valid card payment request should return created status`() {
         val card = Card("Holder", "5339456341711112", LocalDate.now().plusDays(1), "181")
         val cardPaymentRequest = CardPaymentRequest(BigDecimal.valueOf(35.3), 1, buyer, card)
 
@@ -66,10 +61,20 @@ class PaymentControllerIT {
     }
 
     @Test
-    fun givenIdOfNonExistentPaymentShouldReturnNotFoundStatus() {
-        Messenger.env = environment
-
+    fun `given id of non existent payment should return not found status`() {
         mvc.perform(get("/payments/1"))
                 .andExpect(status().isNotFound)
+    }
+
+    @Test
+    fun `given id of existent payment should return ok status`() {
+        val boletoPaymentRequest = BoletoPaymentRequest(BigDecimal.valueOf(35.3), 1, buyer)
+
+        mvc.perform(post("/payments/boleto")
+                .content(mapper.writeValueAsString(boletoPaymentRequest))
+                .contentType(APPLICATION_JSON))
+
+        mvc.perform(get("/payments/1"))
+                .andExpect(status().isOk)
     }
 }
